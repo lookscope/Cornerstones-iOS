@@ -1,23 +1,26 @@
-# 1
 name: Run tests
 
-# 2
 on:
   push
 
-# 3
 jobs:
   build:
     runs-on: macos-latest
-    # 4
     steps:
-    # 5
     - uses: actions/checkout@v2
-    # 6
+
+    - name: Create and boot simulator
+      run: |
+        SIMULATOR_ID=$(xcrun simctl create "NewSimulator" "iPhone 15" iOS 17.0)
+        xcrun simctl boot "$SIMULATOR_ID"
+        echo "SIMULATOR_ID=$SIMULATOR_ID" >> $GITHUB_ENV
+
     - name: Install fastlane
       run: |
         bundle install
-    # 7
+
     - name: Execute fastlane
       run: |
         bundle exec fastlane dev_ios
+      env:
+        SIMULATOR_ID: ${{ env.SIMULATOR_ID }}

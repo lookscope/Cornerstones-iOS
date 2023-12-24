@@ -5,7 +5,9 @@ default_platform(:ios)
 platform :ios do
   desc "Deploy a new version for internal testing"
   lane :dev_ios do
-    scan
+    scan(
+      device: ENV['SIMULATOR_ID']
+    )
     match(type: "appstore", platform: "ios")
     gym(
       scheme: "Cornerstones"

@@ -1,0 +1,17 @@
+ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "600"
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Deploy a new version to the App Store"
+  lane :release do
+    scan
+    cert
+    sigh
+    gym(
+      scheme: "Cornerstones"
+    )
+    deliver
+    increment_build_number
+  end
+end

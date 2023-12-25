@@ -26,7 +26,7 @@ platform :ios do
     match(
       type: "appstore",
       platform: "ios",
-      readonly: true,
+      # readonly: true,
       keychain_name: "temp_keychain", # Specify the keychain name
       keychain_password: ENV["KEYCHAIN_PASSWORD"]
     )

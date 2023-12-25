@@ -31,8 +31,7 @@ platform :ios do
       keychain_password: ENV["KEYCHAIN_PASSWORD"]
     )
     gym(
-      scheme: "Cornerstones",
-      keychain_name: "temp_keychain"
+      scheme: "Cornerstones"
     )
     pilot(
       skip_waiting_for_build_processing: true,

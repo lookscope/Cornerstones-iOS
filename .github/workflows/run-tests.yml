@@ -30,6 +30,15 @@ jobs:
       run: |
         bundle install
 
+    - name: Create and unlock keychain
+      run: |
+        bundle exec fastlane setup_keychain
+      env:
+        KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+
+    - name: List code signing identities
+      run: security find-identity -v -p codesigning temp_keychain
+
     - name: Execute fastlane
       run: |
         bundle exec fastlane dev_ios

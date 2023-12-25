@@ -8,9 +8,6 @@ platform :ios do
     scan(
       device: ENV['SIMULATOR_ID']
     )
-    gym(
-      scheme: "Cornerstones"
-    )
     cert(
       username: "jungik.son@gmail.com"
     )
@@ -20,6 +17,9 @@ platform :ios do
       type: "appstore"
     )
     # match(type: "appstore", platform: "ios")
+    gym(
+      scheme: "Cornerstones"
+    )
     pilot(
       skip_waiting_for_build_processing: true,
       skip_submission: true

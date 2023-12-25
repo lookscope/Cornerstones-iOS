@@ -9,9 +9,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: List available simulators
+      run: xcrun simctl list devicetypes runtimes
+
     - name: Create and boot simulator
       run: |
-        SIMULATOR_ID=$(xcrun simctl create "NewSimulator" "iPhone 15" iOS 17.0)
+        SIMULATOR_ID=$(xcrun simctl create "NewSimulator" "iPhone 14 Pro" iOS 17.0)
         xcrun simctl boot "$SIMULATOR_ID"
         echo "SIMULATOR_ID=$SIMULATOR_ID" >> $GITHUB_ENV
 

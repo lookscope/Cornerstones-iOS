@@ -8,7 +8,11 @@ platform :ios do
     scan(
       device: ENV['SIMULATOR_ID']
     )
-    match(type: "appstore", platform: "ios")
+    match(
+      type: "appstore",
+      readonly: true,
+      platform: "ios"
+    )
     gym(
       scheme: "Cornerstones"
     )

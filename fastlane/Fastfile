@@ -15,18 +15,30 @@ platform :ios do
       is_key_content_base64: true,
       in_house: false  # set to true if you're part of the Apple Enterprise Program
     )
+    create_keychain(
+      name: "temp_keychain",
+      password: ENV["KEYCHAIN_PASSWORD"],
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600, # The keychain will be unlocked for this duration
+      lock_when_sleeps: true
+    )
     match(
       type: "appstore",
       platform: "ios",
-      readonly: true
+      readonly: true,
+      keychain_name: "temp_keychain", # Specify the keychain name
+      keychain_password: ENV["KEYCHAIN_PASSWORD"]
     )
     gym(
-      scheme: "Cornerstones"
+      scheme: "Cornerstones",
+      keychain_name: "temp_keychain"
     )
     pilot(
       skip_waiting_for_build_processing: true,
       skip_submission: true
     )
     increment_build_number
+    delete_keychain(name: "temp_keychain")
   end
 end

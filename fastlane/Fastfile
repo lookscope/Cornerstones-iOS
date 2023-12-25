@@ -8,15 +8,12 @@ platform :ios do
     scan(
       device: ENV['SIMULATOR_ID']
     )
-    cert(
-      username: "jungik.son@gmail.com"
+    app_store_connect_api_key()
+    match(
+      type: "appstore",
+      platform: "ios",
+      readonly: true
     )
-    sigh(
-      app_identifier: "co.lookscope.cornerstones",
-      username: "jungik.son@gmail.com",
-      type: "appstore"
-    )
-    # match(type: "appstore", platform: "ios")
     gym(
       scheme: "Cornerstones"
     )

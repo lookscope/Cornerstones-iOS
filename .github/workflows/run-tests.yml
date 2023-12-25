@@ -18,6 +18,12 @@ jobs:
         xcrun simctl boot "$SIMULATOR_ID"
         echo "SIMULATOR_ID=$SIMULATOR_ID" >> $GITHUB_ENV
 
+    - name: Clone certificates repo
+      env:
+        GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+      run: |
+        git clone https://x-access-token:${GH_PAT}@github.com/lookscope/cornerstones-fastlane-match.git
+
     - name: Install fastlane
       run: |
         bundle install

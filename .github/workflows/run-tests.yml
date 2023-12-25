@@ -18,6 +18,14 @@ jobs:
         xcrun simctl boot "$SIMULATOR_ID"
         echo "SIMULATOR_ID=$SIMULATOR_ID" >> $GITHUB_ENV
 
+    - name: Configure Git to use PAT
+      env:
+        GH_PERSONAL_ACCESS_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+      run: |
+        git config --global user.email "json@lookscopeapp.com"
+        git config --global user.name "Jay's CI Bot"
+        git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic $(echo -n json@lookscopeapp.com:${GH_PERSONAL_ACCESS_TOKEN} | base64)"
+
     - name: Install fastlane
       run: |
         bundle install

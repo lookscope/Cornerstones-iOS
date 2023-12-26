@@ -39,7 +39,9 @@ platform :ios do
       export_options: {
         provisioningProfiles: {
           "co.lookscope.cornerstones": "match Development co.lookscope.cornerstones"
-        }
+        },
+        signingStyle: "automatic",
+        allowProvisioningUpdates: true
       }
     )
     pilot(

@@ -46,9 +46,6 @@ jobs:
     - name: List code signing identities
       run: security find-identity -v -p codesigning temp_keychain
 
-    - name: List provisioning profiles
-      run: fastlane run list_profiles
-
     - name: Execute fastlane
       run: |
         bundle exec fastlane dev_ios

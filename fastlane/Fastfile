@@ -35,7 +35,12 @@ platform :ios do
       device: ENV['SIMULATOR_ID']
     )
     gym(
-      scheme: "Cornerstones"
+      scheme: "Cornerstones",
+      export_options: {
+        provisioningProfiles: {
+          "co.lookscope.cornerstones": "match Development co.lookscope.cornerstones"
+        }
+      }
     )
     pilot(
       skip_waiting_for_build_processing: true,

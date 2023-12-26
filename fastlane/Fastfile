@@ -38,10 +38,10 @@ platform :ios do
       scheme: "Cornerstones",
       export_options: {
         provisioningProfiles: {
-          "co.lookscope.cornerstones": "match Development co.lookscope.cornerstones"
+          "co.lookscope.cornerstones": "match AppStore co.lookscope.cornerstones"
         },
-        signingStyle: "automatic",
-        allowProvisioningUpdates: true
+        signingStyle: "manual",
+        method: "app-store"
       }
     )
     pilot(

@@ -45,7 +45,6 @@ platform :ios do
       }
     )
     pilot(
-      username: ENV["FASTLANE_USER"],
       skip_waiting_for_build_processing: true,
       skip_submission: true
     )

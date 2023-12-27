@@ -3,8 +3,8 @@ ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "600"
 default_platform(:ios)
 
 platform :ios do
-  desc "Create and unlock keychain"
-  lane :setup do
+  desc "Deploy a new version for internal testing"
+  lane :dev_ios do
     create_keychain(
       name: "temp_keychain",
       password: ENV["KEYCHAIN_PASSWORD"],
@@ -27,10 +27,6 @@ platform :ios do
       keychain_name: "temp_keychain", # Specify the keychain name
       keychain_password: ENV["KEYCHAIN_PASSWORD"]
     )
-  end
-
-  desc "Deploy a new version for internal testing"
-  lane :dev_ios do
     scan(
       device: ENV['SIMULATOR_ID']
     )
